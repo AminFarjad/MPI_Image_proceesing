@@ -242,7 +242,7 @@ int main(int argc, char *argv[])
     int remaining_lines;
     if (rank == 0)
     {
-        ifstream fin("any3.ppm");
+        ifstream fin("img.ppm");
         string formate;
         fin >> formate;
         if (formate != "P3")

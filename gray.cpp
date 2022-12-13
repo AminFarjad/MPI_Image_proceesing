@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    string file="any3.ppm";
+    string file="noob4.ppm";
     if (rank == 0)
     {
         ifstream fin(file);
