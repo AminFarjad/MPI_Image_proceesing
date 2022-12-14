@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
             }
         }
         fin.close();
-        size_for_proc=height/4;
+        size_for_proc=height/size;
     }
 
     MPI_Bcast((void *)&width, 1, MPI_INT, 0, MPI_COMM_WORLD);
