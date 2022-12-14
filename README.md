@@ -3,15 +3,25 @@ This project was created for the course of parallel and distributed computing of
  
 How to run the project
 convert -compress none filename.jpg output.ppm   // linux utility  to convert jpg/jpeg/png file to ppm format it normally gives result in p6 format
+
 gcc sample.c   // program to convert output.ppm if it is in p6 to p3 (ascii coded format) 
+
 ./a.out p3 output.ppm output_file.ppm
+
 mpic++ gray.cpp   // parallely convert file to gray 
+
 mpirun --oversubscribe -np 4 ./a.out   // process count can be n
+
 mpic++ noise.cpp
+
 mpirun --oversubscribe -np 4 ./a.out    //process count can be n
+
 mpic++ denoising.cpp
+
 mpirun --oversubscribe -np 4 ./a.out    //process count can be n
+
 mpic++ filters.cpp
+
 mpirun --oversubscribe -np 4 ./a.out     //parallely run 7 filters on an image not more than 7 filters are there but can create their own filters and apply them also
 
 
