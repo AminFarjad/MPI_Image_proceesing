@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 #include <mpi.h>
 #include <unistd.h>
+#include <string>
 using namespace std;
 
 // convert -compress none any1.jpg any2.ppm
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    string file="noob4.ppm";
+    string file = "output_file.ppm";
     if (rank == 0)
     {
         ifstream fin(file);
@@ -61,6 +62,10 @@ int main(int argc, char *argv[])
     ifstream pread(file);
     pread.seekg(start, ios::beg);
     pixels = new int[width * size_for_proc];
+    fstream loclffile("result-" + to_string(rank) +".ppm", ios::out);
+    loclffile<<"P3"<<endl;
+    loclffile<<width<<" "<<size_for_proc<<endl;
+    loclffile<<"255"<<endl;
     for (int i = 0; i < size_for_proc; i++)
     {
         for (int j = 0; j < width; j++)
@@ -68,12 +73,18 @@ int main(int argc, char *argv[])
             pread >> pix1 >> pix2 >> pix3;
             avg = (pix1 + pix2 + pix3) / 3;
             pixels[(i * width) + j] = avg;
+            loclffile << avg <<" "<<avg<<" "<<avg << " ";
         }
+        loclffile << endl;
     }
+    loclffile.close();
+
     MPI_Gather((void *)pixels, width * size_for_proc, MPI_INT, (void *)arr, width * size_for_proc, MPI_INT, 0, MPI_COMM_WORLD);
     if (rank == 0)
     {
         pread.close();
+
+        fstream loclffile("result-" + to_string(rank)+".ppm", ios::app);
         if (((size * size_for_proc) - height) != 0)
         {
             cout << "yes";
@@ -86,9 +97,13 @@ int main(int argc, char *argv[])
                 pread >> pix1 >> pix2 >> pix3;
                 avg = (pix1 + pix2 + pix3) / 3;
                 arr[size * size_for_proc * width + i] = avg;
+
+                loclffile << avg << " ";
                 i++;
             }
             pread.close();
+
+            loclffile.close();
         }
         ofstream fout("output.ppm");
         fout << "P3\n";
