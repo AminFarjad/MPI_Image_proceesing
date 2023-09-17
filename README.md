@@ -29,10 +29,10 @@ mpirun --oversubscribe -np 4 ./a.out     //parallely run 7 filters on an image n
 
 MPI_library was used for message passing between diff process
 This project includes 
->parallely applying gray scale on a p3 type image 
->parallely applying noise(salt and pepper noise) on a p3 gray scale image  
->denoising the image produced by part 2 median denoising was applied on it which is good for salt and pepper noise
->parallely applying 7 types of filter on a p3 type image (includes task parallelism)
+1)parallely applying gray scale on a p3 type image 
+2)parallely applying noise(salt and pepper noise) on a p3 gray scale image  
+3)denoising the image produced by part 2 median denoising was applied on it which is good for salt and pepper noise
+4)parallely applying 7 types of filter on a p3 type image (includes task parallelism)
 filters are: 
              gray
              gamma correction
