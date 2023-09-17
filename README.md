@@ -2,6 +2,7 @@
 This project was created for the course of parallel and distributed computing offered by Fast Nuces taught by Sir Danish khan
  
 How to run the project
+
 convert -compress none filename.jpg output.ppm   // linux utility  to convert jpg/jpeg/png file to ppm format it normally gives result in p6 format
 
 gcc sample.c   // program to convert output.ppm if it is in p6 to p3 (ascii coded format) 
