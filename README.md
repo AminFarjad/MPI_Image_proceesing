@@ -1,4 +1,4 @@
-# MPI_Image_proceesing
+# MPI_Image_processing
 This project was created for the course of parallel and distributed computing offered by Fast Nuces taught by Sir Danish khan
  
 How to run the project
@@ -28,11 +28,16 @@ mpirun --oversubscribe -np 4 ./a.out     //parallely run 7 filters on an image n
 
 
 MPI_library was used for message passing between diff process
-This project includes 
+This project includes
+
 1)parallely applying gray scale on a p3 type image 
-2)parallely applying noise(salt and pepper noise) on a p3 gray scale image  
+
+2)parallely applying noise(salt and pepper noise) on a p3 gray scale image 
+
 3)denoising the image produced by part 2 median denoising was applied on it which is good for salt and pepper noise
+
 4)parallely applying 7 types of filter on a p3 type image (includes task parallelism)
+
 filters are: 
              gray
              gamma correction
