@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include<random>
 using namespace std;
-
+// hello world
 int main(int argc, char *argv[])
 {
     int size, rank;
